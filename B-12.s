@@ -1,8 +1,6 @@
-# B.11 Escriba el programa “ITOA1024.s” basado en el punto B.09, de forma tal que el número
-# impreso por consola sea “1234” y no “4321”. Recomendamos almacenar cada dígito en
-# memoria e ir recorriendo la memoria en orden inverso para imprimir por consola. Puede crear
-# en memoria .data una variable de 4 bytes que almacene ceros inicialmente y utilizar este
-# espacio de memoria para invertir el número.
+# B.12 Escriba el programa “ITOA.s” basado en los puntos anteriores pero ahora el número a
+# convertir no es solamente el 1024 en x5 sino que puede tener cualquier valor positivo en x5.
+# Ejemplo: Si x5=0xBC614E , entonces debe imprimir por consola el 12345678.
 
 .data
     aux: .word 0,0,0 # con 2^32 el numero mas grande son 10 digitos, por lo que con 12 bytes alcanza
