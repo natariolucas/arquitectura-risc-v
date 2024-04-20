@@ -6,7 +6,7 @@
 .text
     la x5, vector
     
-    # asumo primero como el menor
+    # asumo primero como el mayor
     lw t3, 0(x5)
     add x7, x0, t3 # x7 persiste el mayor 
 
