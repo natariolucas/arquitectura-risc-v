@@ -13,13 +13,13 @@
 .data
     centena: .word 0,100,200,300,400,500,600,700,800,900
 .text
-    la x5,centena
+    la x5,centena # Vector
+    addi x6,x0,8 # Indice del vector
     
-    addi x6,x0,8
     slli x6, x6, 2 # Multiplico por 4 para que el movimiento sea de words
-    add x6, x5, x6
+    add x6, x5, x6 # Sumo 8*4  a la direccion
     
-    lw a0, 0(x6)
-    li a7, 1
+    lw a0, 0(x6) # Cargo el valor del elem
+    li a7, 1 
     ecall
     
