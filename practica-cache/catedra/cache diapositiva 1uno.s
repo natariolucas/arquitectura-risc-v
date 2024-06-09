@@ -1,0 +1,17 @@
+.data
+vector1: .word 0x0,0x10,0x20,0x30,0x40,0x50,0x60,0x70,
+vector2: .word 0x80,0x90,0xa0,0xb0,0xc0,0xd0,0xe0,0xf0
+cont: .word 16
+.text
+lui x7,0x10000
+la x13,cont
+lw x5, 0,x13
+loop:
+    lw x10, 0,x7
+    addi x10,x10,1
+    sw x10, 0,x7
+    addi x5,x5,-1
+    addi x7,x7,+4
+    bne x0,x5,loop
+fin:
+    beq x0,x0,fin
