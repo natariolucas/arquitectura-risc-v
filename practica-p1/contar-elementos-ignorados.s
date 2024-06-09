@@ -1,17 +1,31 @@
 .data
-vector1: .word 0x0,0x10,0x20,0x30,0x40,0x50,0x60,0x70,
-vector2: .word 0x80,0x90,0xa0,0xb0,0xc0,0xd0,0xe0,0xf0
-cont: .word 16
+    vector: .word 1,-152,45,-16,-3,4,3,-10,-21,-500,0
 .text
-lui x7,0x10000
-la x13,cont
-lw x5, 0,x13
+    la x4,vector
+    lw x5,0(x4)
+    li x20,0 #contador de no neg
+
 loop:
-    lw x10, 0,x7
-    addi x10,x10,1
-    sw x10, 0,x7
-    addi x5,x5,-1
-    addi x7,x7,+4
-    bne x0,x5,loop
+    blt x0,x5,NoNeg
+    beq x5,x0,mostrar
+    addi x20,x20,1
+    addi x4,x4,4
+    lw x5,0(x4)
+    j loop
+    
+    
+mostrar: 
+    add a0,x20,x0
+    li a7,1
+    ecall
+    bge x0,x0,fin    
+
+
+NoNeg:
+    addi x4,x4,4
+    lw x5,0(x4)
+    j loop
+    
 fin:
-    beq x0,x0,fin
+    li x1, 0x48
+    jalr x0,x1,0
